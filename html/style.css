@@ -1,0 +1,55 @@
+.img-fluid {
+    width: 950px; /* Réduisez la largeur selon vos besoins */
+    height: auto; /* Conserve les proportions */
+    max-height: 950px; /* Limitez la hauteur si nécessaire */
+    object-fit: contain; /* Assure un bon redimensionnement */
+    display: block; /* Transforme l'image en bloc pour permettre le centrage */
+    margin: 0 auto; /* Centre horizontalement l'image */
+    padding: 0; /* Supprime tout espace intérieur */
+    border: none; /* Supprime toute bordure si elle existe */
+}
+
+.img-thermosta{
+    width: 350px; /* Réduisez la largeur selon vos besoins */
+    height: auto; /* Conserve les proportions */
+    max-height: 450px; /* Limitez la hauteur si nécessaire */
+    object-fit: contain; /* Assure un bon redimensionnement */
+    display: block; /* Transforme l'image en bloc pour permettre le centrage */
+    margin: 0 auto; /* Centre horizontalement l'image */
+    padding: 0; /* Supprime tout espace intérieur */
+    border: none; /* Supprime toute bordure si elle existe */
+}
+
+
+.custom-sidebar {
+    background-image: url('/html/images/fond.jpg'); /* Chemin de votre image */
+    background-size: cover; /* Assure que l'image couvre tout l'élément */
+    background-repeat: no-repeat; /* Évite la répétition de l'image */
+    background-position: center; /* Centre l'image dans l'élément */
+    color: white; /* Ajuste la couleur du texte si nécessaire pour la lisibilité */
+}
+
+.rec-logo{
+    background: url(../images/logo.jpg);
+    background-size: 230px;
+    width: 230px;
+}
+.rec-logo:hover{
+    background-position: left center;
+    background-size: 350px;
+}
+
+/* Animation pour le dégradé de gris à noir sur 20 secondes */
+@keyframes colorFade {
+    0% {
+        fill: gray;
+    }
+    100% {
+        fill: black;
+    }
+}
+
+.co2-transition {
+    animation: colorFade 20s forwards; /* Animation de 20 secondes */
+}
+
