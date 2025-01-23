@@ -297,3 +297,55 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+
+
+// CO2CHART
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const ctxLinear = document.getElementById("co2Chart").getContext("2d");
+  
+    let totalCO2 = 0;
+    const timestamps = [];
+  
+    const co2LinearChart = new Chart(ctxLinear, {
+      type: "line",
+      data: {
+        labels: [],
+        datasets: [
+          {
+            label: "Total CO₂ Emissions (kg) en temps Réel",
+            data: [],
+            borderColor: "rgba(75, 192, 192, 1)",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            borderWidth: 2,
+            pointRadius: 5,
+            fill: false,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: "Time (seconds)" } },
+          y: { beginAtZero: true, title: { display: true, text: "Total CO₂ (kg)" } },
+        },
+      },
+    });
+  
+    function calculateTotalCO2() {
+      totalCO2 += Math.random() * 10; // Données fictives pour tester
+      const currentTime = new Date()
+        .toLocaleTimeString([], {  minute: "2-digit"});
+  
+      timestamps.push(currentTime);
+      co2LinearChart.data.labels = [...timestamps];
+      co2LinearChart.data.datasets[0].data.push(totalCO2);
+  
+      co2LinearChart.update();
+    }
+  
+    setInterval(calculateTotalCO2, 60000); // Met à jour toutes les 10 secondes
+  });
+  

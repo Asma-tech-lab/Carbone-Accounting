@@ -1,116 +1,144 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Plateforme Carbone Accounting</title>
-
-    <meta
-        name="description"
-        content="Découvrez notre solution IOT de carbone Accounting."
-    />
-    <meta
-        name="keywords"
-        content="accueil, présentation, informations, IoT, services, nouveautés, entreprise, bienvenue"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!--boxicones css-->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/html/style.css">
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.css" />
-    <script defer src="../JS/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+   <script defer src="../JS/script.js"></script>
+ 
 </head>
-<body class="g-sidenav-show  bg-gray-100">
-    <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
-      <div class="sidenav-header">
-    <header>
-        <!-- Navigation Bar -->
-        <nav class="navbar navbar-dark bg-dark shadow-sm">
-            <div class="container-fluid">
-                <a class="navbar-brand mb-3" href="#">Carbon Accounting</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="nav flex-column">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Login</a>
-                </div>
+<header>
+
+    <body class="bg-light">
+        <div class="container-fluid">
+            <div class="row">
+
+                <nav class="col-md-2 d-md-block custom-sidebar">
+                    <div class="position-sticky pt-3 text-white">
+                        <div class="text-center mb-3">
+                            <img src="images/logo.jpg" alt="User" class="rec-logo" width="230">
+                            <h5 class="mt-2">Carbone Accounting IOT</h5>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active text-white" href="#">
+                                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-layer-group"></i> Demarrer l'usine
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-boxes"></i> Suivie
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-file-alt"></i> Propriétés Capteurs
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-chart-bar"></i> A propos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="#">
+                                    <i class="fas fa-envelope"></i> Mail
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Main Content -->
+                <main class="col-md-10 ms-sm-auto px-md-4">
+                    <div
+                        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                        <h1 class="h2">User Visits</h1>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <!-- Maquette usine -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <object id="monSvg" type="image/svg+xml" data="maquette.svg" class="img-fluid">
+                                    </object>
+                                    <p id="ppmValue" class="mt-3"></p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <!-- Server Load -->
+                            <div class="card mb-3">
+                                <div class="card-body text-center">
+                                    <h5>Total Emission de CO2 en Temps Réel </h5>
+                                    <div id="serverLoadChart"></div>
+                                    <canvas id="co2Chart" width="400" height="200"></canvas>
+                            
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <div class="dashboard">
+                                        <h3>Émissions de CO₂ par Usine en Temps Réel</h3>
+                                        <object id="monSvg" data="your-svg-file.svg" type="image/svg+xml"
+                                            style="width: 100%; height: 300px;"></object>
+                                        <div id="chartContainer">
+                                            <canvas id="co2PolarChart"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <!-- Chat Section -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5>Direct Message</h5>
+                                    <p>Dan Rogers sent you a message:</p>
+                                    <textarea class="form-control" rows="3" placeholder="Reply Dan"></textarea>
+                                    <button class="btn btn-primary mt-3">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Weather Widget -->
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h5>11°C</h5>
+                                    <p>Budapest</p>
+                                    <i class="fas fa-cloud fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
             </div>
-        </nav>
-    </header>
-
-    <!-- Section 1 : Hero Section -->
-    <section class="py-2 bg-light text-center">
-        <div class="container">
-            <h1 class="mb-4">Bienvenue sur Carbon Accounting</h1>
         </div>
-    </section>
 
-   
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- Section 3 : Services -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Notre solution</h2>
-            <div class="row g-10">
-                <div class="col-md-10">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Service 1</h5>
-                            <object id="monSvg" type="image/svg+xml" data="maquette.svg"></object>
-                            <p id="ppmValue" class="mt-3">Current CO2: 0 ppm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Service 2</h5>
-                            <object id="mesvaleurs" type="image/svg+xml" data="thermo.svg"></object>
-                               <p id="ppmValue" class="mt-3">Valeur: 0 ppm</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Service 3</h5>
-                            <p class="card-text">Description du troisième service offert.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section 4 : Contact -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4">Contactez-nous</h2>
-            <form>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Adresse Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Entrez votre email">
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="4" placeholder="Votre message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Envoyer</button>
-            </form>
-        </div>
-    </section>
 
-    <footer class="bg-dark text-white py-4 text-center">
-        <p>&copy; 2024 Carbon Accounting. Tous droits réservés.</p>
-    </footer>
 
-    <!-- Lien vers Bootstrap JS -->
-    <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+</header>
 </body>
+
 </html>
