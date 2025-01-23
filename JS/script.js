@@ -346,6 +346,6 @@ document.addEventListener("DOMContentLoaded", () => {
       co2LinearChart.update();
     }
   
-    setInterval(calculateTotalCO2, 60000); // Met à jour toutes les 10 secondes
+    setInterval(calculateTotalCO2, 10000); // Met à jour toutes les 10 secondes
   });
   
